@@ -12,8 +12,9 @@ st.write(
 name_on_order = st.text_input("Name on Smoothie:")
 st.write("The name on your Smoothie will be: ", name_on_order)
 
-cnx = st.connection("snowflake")
-if cnx is None:
+try:
+    cnx = st.connection("snowflake")
+except ValueError:
     st.stop()
     
 session = cnx.session()
